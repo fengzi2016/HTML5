@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scores</title>
+    <link rel="stylesheet" href="./bootstrap-3.3.7-dist/css/bootstrap.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="./bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <link rel="stylesheet" href="scoresCss.css" type="text/css">
+</head>
+<body>
+<div class="head">
+    <div class="logo">1</div>
+</div>
+<div class="content">
+    <div class="left">
+        <div class="list-group">
+            <a href="scoresWeb.html" class="list-group-item active">
+                学生信息
+            </a>
+            <a href="addScores.html" class="list-group-item add">添加学生信息</a>
+            <a href="findScores.html" class="list-group-item find">查询学生信息</a>
+            <a href="changeScores.html" class="list-group-item change">修改学生信息</a>
+        </div>
+    </div>
+    <div class="right ">
+        <form class="form-horizontal" id="my-form">
+            <div class="form-group">
+                <label for="Id" class="col-sm-2 control-label">学号</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="Id" placeholder="" disabled >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">姓名</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="name" placeholder="" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="group" class="col-sm-2 control-label">民族</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" id="group" placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="class" class="col-sm-2 control-label">班级</label>
+                <div class="col-sm-3">
+                    <input type="number" class="form-control" id="class" placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="math" class="col-sm-2 control-label">数学</label>
+                <div class="col-sm-3">
+                    <input type="number" class="form-control" id="math" placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Chinese" class="col-sm-2 control-label">语文</label>
+                <div class="col-sm-3">
+                    <input type="number" class="form-control" id="Chinese" placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="English" class="col-sm-2 control-label">英语</label>
+                <div class="col-sm-3">
+                    <input type="number" class="form-control" id="English" placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Program" class="col-sm-2 control-label">编程</label>
+                <div class="col-sm-3">
+                    <input type="number" class="form-control" id="Program" placeholder="">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default" onclick="onSubmit()">修改</button>
+                    <button type="reset" class="btn btn-default">重置</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded",function () {
+        document.getElementById("my-form").addEventListener('submit',function () {
+            event.preventDefault();
+            alert('修改成功');
+        });
+    });
+    let stuId=localStorage.getItem('stuId');
+    let stuName=localStorage.getItem('stuName');
+    console.log(stuId+stuName);
+    document.getElementById('Id').value=stuId;
+    document.getElementById('name').value=stuName;
+    function onSubmit() {
+        let id=document.getElementById("Id").value;
+        let name=document.getElementById("name").value;
+        let math=document.getElementById("math").value;
+        let group=document.getElementById("group").value;
+        let klass=document.getElementById("class").value;
+        let Chinese=document.getElementById("Chinese").value;
+        let English=document.getElementById("English").value;
+        let Program=document.getElementById("Program").value;
+        localStorage.setItem(`${id}`,`${name},${math},${Chinese},${English},${Program}`);
+    }
+</script>
+</html>
